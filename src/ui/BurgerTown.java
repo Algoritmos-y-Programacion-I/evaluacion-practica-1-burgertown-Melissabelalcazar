@@ -91,7 +91,7 @@ public class BurgerTown {
      * pos: Los arreglos precios y unidades quedan inicializados
      */
     public static void establecerCantidadVendida() {
-
+        
         System.out.println("\nDigite el numero de platos diferentes vendidos en el dia ");
         int platos = reader.nextInt();
 
@@ -99,34 +99,84 @@ public class BurgerTown {
         unidades = new int[platos];
 
     }
-
+     /**
+     * Descripcion: Este método le solicita al usuario que de el precio y la cantidad de platos que desea
+     * pre: El arreglo precios debe estar inicializado
+     * pre: El arreglo unidades debe estar inicializado
+     * pos: Los arreglos precios y unidades se llenan con los datos proporcionados por el usuario
+     */
     public static void solicitarDatos(){
+       
+        for (int i = 0; i < precios.length; i++) {
+            
+        System.out.println("Por favor ingrese el valor del plato que desea: "+(i+1));
+        
+            precios[i] = reader.nextDouble();
+        
 
-     
+        System.out.println("Por favor ingrese la cantidad de platos que desea: "+(i+1));
+        
+            unidades[i] = reader.nextInt();
+        
+        }
     }
+    /**
+     * Descripcion: Este metodo calcula el total de unidades vendidas en el dia 
+     * pre: el arreglo unidades debe estar inicializado
+     * pre: el arreglo no puede estar vacio 
+     * @return double total Se devuelve el total de ventas como un entero
+     */
 
     public static int calcularTotalPlatosVendidos(){
+        int total = 0;
 
-        return 0;
+        for (int i = 0; i < unidades.length; i++){
+            total += unidades[i];
 
+        }
+        return total;
     }
 
     public static double calcularPrecioPromedio(){
+        double promedio = 0.0;
+        int suma = 0;
 
-        return 0;
+        for (int i = 0; i < precios.length; i++){
 
+            suma+=precios[i];
+
+            promedio = suma/precios.length;
+
+        
+        }
+        return promedio;
     }
-
+    /**
+     * Descripcion: Este metodo calcula el el total de todo el dinero recaudado durante el dia 
+     * pre: los arreglos unidades y precios tienen que estar inicializados 
+     * pre: el arreglo no puede estar vacio
+     * @return double devolvera el dinero recaudado durante el dia 
+     */
     public static double calcularVentasTotales(){
+        double ventasTotales = 0;
 
-        return 0;
+        for (int i = 0; i < unidades.length; i++){
 
+            ventasTotales += unidades[i]*precios[i];
+
+        }
+        return ventasTotales;
     }
 
     public static int consultarPlatosSobreLimite(double limite){
+        int contador = 0;
 
-        return 0;
+        for (int i = 0; i < precios.length;i++){
 
+            if ((precios[i]*unidades[i])>limite){
+                contador++;
+            }
+        }
+        return contador;
     }
-
-}
+} 
